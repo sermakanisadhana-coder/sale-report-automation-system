@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}About | SalesFlow{% endblock %}
+{% block content %}
+<div class="page-heading"><p class="eyebrow">ABOUT THE PROJECT</p><h1>Sales Report Automation</h1><p>A Python-based web application for processing sales data and generating business reports.</p></div>
+<section class="panel"><h2>Project workflow</h2><ol class="workflow"><li>Upload Excel / CSV input</li><li>Validate required data and detect duplicates</li><li>Calculate achievement percentage</li><li>Apply incentive-rate thresholds</li><li>Generate Excel report, summary and error report</li><li>Display dashboard metrics</li></ol></section>
+<section class="panel"><h2>Assessment business rules</h2><p>Achievement % = (Achieved ÷ Target) × 100</p><p>Achievement ≥ 120%: 15% incentive rate</p><p>Achievement ≥ 100%: 10% incentive rate</p><p>Below 100%: 0% incentive rate</p><p class="note">The assessment's example refers to Salary when calculating incentive amount, but Salary is not included in its specified input columns. This version therefore shows the incentive rate only. Confirm the incentive base with your project guide before calculating a payout amount.</p></section>
+{% endblock %}

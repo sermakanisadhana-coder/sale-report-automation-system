@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Dashboard | SalesFlow{% endblock %}
+{% block content %}
+<div class="page-heading"><p class="eyebrow">PERFORMANCE OVERVIEW</p><h1>Sales dashboard</h1><p>Summary of the latest processed sales file.</p></div>
+{% if metrics %}
+<section class="metric-grid">
+  <article class="metric"><span>Valid employees</span><strong>{{ metrics.total }}</strong></article>
+  <article class="metric"><span>Total target</span><strong>{{ "%.2f"|format(metrics.target) }}</strong></article>
+  <article class="metric"><span>Total achieved</span><strong>{{ "%.2f"|format(metrics.achieved) }}</strong></article>
+  <article class="metric"><span>Average achievement</span><strong>{{ "%.2f"|format(metrics.average) }}%</strong></article>
+</section>
+<section class="panel"><div class="section-heading"><div><p class="eyebrow">TOP PERFORMER</p><h2>{{ metrics.top_name }}</h2><p>{{ metrics.top_region }} · Highest achievement percentage</p></div><span class="pill">Top result</span></div></section>
+<section class="panel"><div class="section-heading"><h2>Processed sales records</h2><div class="downloads"><a href="{{ url_for('download', kind='sales') }}">Download sales report ↓</a><a href="{{ url_for('download', kind='errors') }}">Download error report ↓</a></div></div>
+<div class="table-wrap"><table><thead><tr>{% for key in records[0].keys() if records %}<th>{{ key.replace("_"," ") }}</th>{% endfor %}</tr></thead><tbody>{% for row in records %}<tr>{% for value in row.values() %}<td>{{ value }}</td>{% endfor %}</tr>{% endfor %}</tbody></table></div></section>
+{% else %}
+<div class="empty panel"><div class="upload-icon">▤</div><h2>No report available yet</h2><p>Upload a sales Excel or CSV file from the home page to populate the dashboard.</p><a class="primary-link" href="{{ url_for('home') }}">Upload sales data →</a></div>
+{% endif %}
+{% endblock %}

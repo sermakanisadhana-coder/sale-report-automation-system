@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Home | SalesFlow{% endblock %}
+{% block content %}
+<section class="hero">
+  <div><p class="eyebrow">DIT-P05 · PYTHON AUTOMATION PROJECT</p><h1>Turn sales data into <em>clear decisions.</em></h1>
+  <p class="lead">Upload your sales spreadsheet and generate performance analysis, achievement rates and downloadable reports.</p>
+  <a class="primary-link" href="#upload">Get started <span>→</span></a></div>
+  <div class="hero-art"><div class="mini-label">SALES OVERVIEW</div><div class="big-number">+24.8%</div><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><small>Illustrative preview · sample graphic</small></div>
+</section>
+<section class="section" id="upload"><div class="section-heading"><div><p class="eyebrow">AUTOMATED PROCESSING</p><h2>Upload sales data</h2></div><span class="pill">Excel / CSV</span></div>
+<form class="upload-card" action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
+  <div class="upload-icon">↑</div><h3>Choose your sales file</h3><p>Use an .xlsx or .csv file with the required column headings.</p>
+  <input type="file" name="sales_file" accept=".xlsx,.csv" required>
+  <button class="button" type="submit">Process sales report</button>
+</form>
+<div class="requirements"><strong>Required columns</strong><code>Employee_ID · Employee_Name · Target · Achieved · Region</code></div>
+</section>
+<section class="feature-grid">
+  <article><b>01</b><h3>Validate</h3><p>Check required fields, numeric values and duplicate employee IDs.</p></article>
+  <article><b>02</b><h3>Analyse</h3><p>Calculate achievement percentage and performance status.</p></article>
+  <article><b>03</b><h3>Report</h3><p>Download formatted Excel reports and review dashboard metrics.</p></article>
+</section>
+{% endblock %}
